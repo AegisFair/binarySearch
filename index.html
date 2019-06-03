@@ -21,8 +21,24 @@
 <body>
     <!-- Реализация спецификации -->
     <script>
-        function binarySearch($value, $array) {
-
+        function binarySearch(value, array) {
+            var first=0,
+                last=array.length-1,
+                position = -1,
+                found=false,
+                middle;
+            while (found===false && first<= last) {
+                middle=Math.floor((first+last)/2);
+                if(value==array[middle]){
+                    found=true;
+                    position=middle;
+                }else if(value < array[middle]) {
+                    last=middle-1;
+                }else{
+                    first=middle+1;
+                }
+            }
+            return position;
         }
     </script>
 
@@ -31,7 +47,7 @@
 
     <!-- Результат тестов -->
     <div id="mocha"></div>
-    
+
     <!-- Запуск тестов -->
     <script>
         mocha.run();
